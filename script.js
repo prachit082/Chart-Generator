@@ -23,6 +23,13 @@ let chartData = {
     }]
 };
 
+/**
+ * Creates a chart using Chart.js library.
+ *
+ * @param {string} type - The type of chart to create (e.g., 'bar', 'line').
+ * @param {number} [height=400] - The height of the chart in pixels.
+ * @returns {Chart} The created Chart.js instance.
+ */
 function createChart(type, height = 400) {
     const canvasContainer = document.getElementById('canvas-container');
     canvasContainer.innerHTML = `<canvas id="myChart"></canvas>`;
@@ -59,6 +66,13 @@ function createChart(type, height = 400) {
 
 let myChart = createChart('bar'); // Create initial chart with default height = 400
 
+/**
+ * Adds a new data point to the chart.
+ * 
+ * This function retrieves the values from the input fields with IDs 'labelInput' and 'dataInput'.
+ * If both input fields have values, it adds the label to the chart's labels and the data to each dataset.
+ * After updating the chart, it clears the input fields.
+ */
 function addData() {
     const labelInput = document.getElementById('labelInput');
     const dataInput = document.getElementById('dataInput');
@@ -81,6 +95,12 @@ function updateChartType() {
     myChart = createChart(selectedType);
 }
 
+/**
+ * Removes a data point from the specified dataset and updates the chart.
+ *
+ * @param {number} datasetIndex - The index of the dataset from which to remove the data point.
+ * @param {number} index - The index of the data point to remove.
+ */
 function removeData(datasetIndex, index) {
     if (chartData.labels.length > index) {
         chartData.labels.splice(index, 1);
